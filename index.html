@@ -224,95 +224,110 @@
     .stores-title { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; letter-spacing: 0.04em; color: var(--black); margin-bottom: 10px; }
     .stores-title em { font-style: italic; color: var(--gold); }
     .stores-sub { font-size: 12.5px; color: var(--mid); line-height: 1.7; }
-    .stores-grid { display: grid; grid-template-columns: 360px 1fr; gap: 28px; max-width: 1300px; margin: 0 auto; }
-    .store-list { display: flex; flex-direction: column; gap: 14px; }
-    .store-item { border: 1px solid #e8e3dc; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
-    .store-item:hover { border-color: var(--gold-light); }
-    .store-item.active { border-color: var(--gold); background: var(--gold-pale); }
+    .stores-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 24px; max-width: 1300px; margin: 0 auto; align-items: start; }
 
-    /* Store item header with toggle */
-    .store-item-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 20px 0; }
-    .store-item-name { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); font-weight: 500; }
-    .store-item-toggle { background: none; border: none; color: #aaa; font-size: 18px; cursor: pointer; padding: 2px 6px; line-height: 1; transition: color 0.2s, transform 0.3s; }
-    .store-item-toggle:hover { color: var(--gold); }
-    .store-item-toggle.collapsed { transform: rotate(-90deg); }
+    /* ══════════════════════════════════════════════════════════
+       LEFT PANEL — "Apa Kata Mereka" (rating + ulasan)
+       ══════════════════════════════════════════════════════════ */
+    .reviews-panel { background: var(--charcoal); border: 1px solid #2a2a2a; border-radius: 10px; padding: 26px; color: #e8e5e0; }
+    .reviews-panel-title { display: flex; align-items: center; gap: 10px; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: var(--off-white); margin-bottom: 18px; }
+    .reviews-panel-title .quote-icon { color: var(--gold); font-style: normal; font-size: 18px; }
+    .reviews-count-badge { background: var(--gold); color: var(--black); font-family: 'Jost', sans-serif; font-style: normal; font-size: 11px; font-weight: 600; border-radius: 50%; width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; }
 
-    .store-item-body { padding: 0 20px 16px; overflow: hidden; transition: max-height 0.35s ease, opacity 0.3s; max-height: 1200px; opacity: 1; }
-    .store-item-body.hidden { max-height: 0; opacity: 0; padding-bottom: 0; }
+    .rating-summary-card { background: var(--dark); border: 1px solid #333; border-radius: 8px; padding: 18px 20px; margin-bottom: 18px; }
+    .rating-summary-top { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; }
+    .rating-summary-score { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 500; color: var(--off-white); line-height: 1; }
+    .rating-summary-right { display: flex; flex-direction: column; gap: 4px; }
+    .rating-summary-stars { display: flex; gap: 2px; font-size: 15px; }
+    .rating-summary-stars .rs-star { color: #4a4a4a; }
+    .rating-summary-stars .rs-star.filled { color: var(--gold); }
+    .rating-summary-count { font-size: 11px; color: #999; letter-spacing: 0.03em; }
 
-    .store-item-addr { font-size: 12px; color: var(--mid); line-height: 1.6; margin-bottom: 8px; margin-top: 10px; }
-    .store-item-meta { font-size: 11px; color: #999; line-height: 1.8; }
+    .rating-bars { display: flex; flex-direction: column; gap: 6px; }
+    .rating-bar-row { display: flex; align-items: center; gap: 9px; font-size: 11px; color: #aaa; }
+    .rb-label { width: 22px; flex-shrink: 0; letter-spacing: 0.02em; }
+    .rb-track { flex: 1; height: 6px; background: #2c2c2c; border-radius: 4px; overflow: hidden; }
+    .rb-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius: 4px; transition: width 0.4s ease; }
+    .rb-count { width: 16px; text-align: right; flex-shrink: 0; color: #888; }
 
-    /* ── STORE SOCIAL ── */
-    .store-social { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
-    .store-social-btn { display: inline-flex; align-items: center; gap: 5px; padding: 5px 11px; border-radius: 3px; font-size: 10px; letter-spacing: 0.08em; text-decoration: none; font-family: 'Jost', sans-serif; font-weight: 500; transition: opacity 0.2s, transform 0.15s; cursor: pointer; border: none; }
-    .store-social-btn:hover { opacity: 0.82; transform: translateY(-1px); }
-    .store-social-btn svg { width: 12px; height: 12px; fill: currentColor; flex-shrink: 0; }
-    .ssb-ig { background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: #fff; }
-    .ssb-fb { background: var(--fb); color: #fff; }
-    .ssb-wa { background: var(--wa); color: #fff; }
-    .ssb-tt { background: #111; color: #fff; }
+    .review-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 14px; }
+    .review-item { background: var(--dark); border: 1px solid #2e2e2e; border-radius: 8px; padding: 14px 16px; }
+    .review-item-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .review-avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #c0392b, #922b21); color: #fff; font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; flex-shrink: 0; letter-spacing: 0.02em; }
+    .review-item-meta { display: flex; flex-direction: column; line-height: 1.3; }
+    .review-author { font-size: 12.5px; font-weight: 500; color: var(--off-white); }
+    .review-date { font-size: 10.5px; color: #888; }
+    .review-stars { font-size: 12px; color: var(--gold); margin-bottom: 6px; letter-spacing: 1px; }
+    .review-text { font-size: 12.5px; color: #ccc; line-height: 1.6; font-style: italic; }
+    .review-photos { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 9px; }
+    .review-photo-thumb { width: 56px; height: 56px; object-fit: cover; border-radius: 6px; border: 1px solid #3a3a3a; cursor: pointer; }
+    .no-comments { font-size: 11.5px; color: #888; letter-spacing: 0.03em; font-style: italic; text-align: center; padding: 16px 0; }
 
-    /* ── STORE RATING ── */
-    .store-rating-wrap { margin-top: 14px; padding-top: 14px; border-top: 1px solid #e8e3dc; }
-    .store-rating-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
-    .store-stars { display: flex; gap: 4px; margin-bottom: 4px; }
-    .star-btn { background: none; border: none; font-size: 20px; cursor: pointer; color: #ddd6cc; transition: color 0.15s, transform 0.1s; padding: 0; line-height: 1; }
+    .btn-see-all-reviews { width: 100%; background: var(--dark); border: 1px solid #3a3a3a; color: #ccc; font-family: 'Jost', sans-serif; font-size: 11.5px; letter-spacing: 0.08em; padding: 11px; cursor: pointer; border-radius: 6px; transition: all 0.2s; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .btn-see-all-reviews:hover { border-color: var(--gold); color: var(--gold); }
+    .btn-see-all-reviews .chev.up { transform: rotate(180deg); display: inline-block; }
+    .btn-write-review { width: 100%; background: none; border: 1px solid var(--gold); color: var(--gold); font-family: 'Jost', sans-serif; font-size: 11.5px; letter-spacing: 0.1em; padding: 11px; cursor: pointer; border-radius: 6px; transition: all 0.2s; }
+    .btn-write-review:hover { background: var(--gold); color: var(--black); }
+
+    /* ── Write review form ── */
+    .write-review-form { margin-top: 16px; padding-top: 16px; border-top: 1px dashed #3a3a3a; }
+    .write-review-form.hidden { display: none; }
+    .wr-stars-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .store-stars { display: flex; gap: 5px; margin-bottom: 10px; }
+    .star-btn { background: none; border: none; font-size: 22px; cursor: pointer; color: #444; transition: color 0.15s, transform 0.1s; padding: 0; line-height: 1; }
     .star-btn:hover { transform: scale(1.15); }
-    .star-btn.filled { color: var(--gold); }
-    .store-rating-summary { font-size: 11px; color: var(--mid); margin-top: 4px; }
-    .store-rating-summary strong { color: var(--gold); font-weight: 500; }
-
-    /* ── MAP WRAP (positioned BEFORE comment form) ── */
-    .store-map-area { margin-top: 14px; padding-top: 14px; border-top: 1px solid #e8e3dc; }
-    .store-map-area-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-    .store-map-thumb { position: relative; cursor: pointer; }
-    .store-map-thumb iframe { width: 100%; height: 160px; border: 0; display: block; pointer-events: none; border: 1px solid #e8e3dc; }
-    .store-map-open-btn { display: block; text-align: center; background: #f5f3ef; border: 1px solid #e0dbd4; color: var(--mid); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 7px; cursor: pointer; font-family: 'Jost', sans-serif; transition: all 0.2s; margin-top: 6px; }
-    .store-map-open-btn:hover { background: var(--gold-pale); border-color: var(--gold); color: var(--black); }
-    .store-map-hide-btn{
-  border:none;
-  background:none;
-  color:var(--gold);
-  cursor:pointer;
-  font-size:11px;
-  letter-spacing:.08em;
-}
-
-.store-map-content.hidden{
-  display:none;
-}
-
-
-    /* ── COMMENT FORM ── */
-    .comment-form-wrap { margin-top: 14px; padding-top: 14px; border-top: 1px dashed #e0dbd4; }
-    .comment-form-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-    .comment-textarea { width: 100%; border: 1px solid #e0dbd4; background: var(--off-white); font-family: 'Jost', sans-serif; font-size: 12px; color: var(--dark); padding: 9px 11px; resize: vertical; min-height: 68px; letter-spacing: 0.02em; line-height: 1.6; outline: none; transition: border-color 0.2s; }
+    .star-btn.filled, .star-btn.hover-fill { color: var(--gold); }
+    .comment-textarea { width: 100%; border: 1px solid #3a3a3a; background: var(--black); font-family: 'Jost', sans-serif; font-size: 12px; color: #e0e0e0; padding: 9px 11px; resize: vertical; min-height: 68px; letter-spacing: 0.02em; line-height: 1.6; outline: none; transition: border-color 0.2s; border-radius: 6px; }
     .comment-textarea:focus { border-color: var(--gold); }
-    .comment-name-input { width: 100%; border: 1px solid #e0dbd4; background: var(--off-white); font-family: 'Jost', sans-serif; font-size: 12px; color: var(--dark); padding: 7px 11px; letter-spacing: 0.02em; outline: none; transition: border-color 0.2s; margin-bottom: 6px; }
+    .comment-name-input { width: 100%; border: 1px solid #3a3a3a; background: var(--black); font-family: 'Jost', sans-serif; font-size: 12px; color: #e0e0e0; padding: 8px 11px; letter-spacing: 0.02em; outline: none; transition: border-color 0.2s; margin-bottom: 8px; border-radius: 6px; }
     .comment-name-input:focus { border-color: var(--gold); }
-    .photo-upload-row { display: flex; align-items: center; gap: 9px; margin: 8px 0; flex-wrap: wrap; }
-    .photo-upload-btn { display: inline-flex; align-items: center; gap: 6px; background: none; border: 1px dashed var(--gold); color: var(--gold); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 12px; cursor: pointer; font-family: 'Jost', sans-serif; transition: background 0.2s; }
-    .photo-upload-btn:hover { background: var(--gold-pale); }
+    .photo-upload-row { display: flex; align-items: center; gap: 9px; margin: 9px 0; flex-wrap: wrap; }
+    .photo-upload-btn { display: inline-flex; align-items: center; gap: 6px; background: none; border: 1px dashed var(--gold); color: var(--gold); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; cursor: pointer; font-family: 'Jost', sans-serif; transition: background 0.2s; border-radius: 5px; }
+    .photo-upload-btn:hover { background: rgba(201,168,76,0.12); }
     .photo-upload-input { display: none; }
     .photo-preview-list { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 6px; }
-    .photo-preview-item { position: relative; width: 58px; height: 58px; border: 1px solid #e0dbd4; overflow: hidden; }
+    .photo-preview-item { position: relative; width: 58px; height: 58px; border: 1px solid #3a3a3a; overflow: hidden; border-radius: 6px; }
     .photo-preview-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .photo-remove-btn { position: absolute; top: 2px; right: 2px; background: rgba(13,13,13,0.75); color: #fff; border: none; width: 16px; height: 16px; font-size: 9px; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; }
-    .btn-submit-comment { background: var(--black); color: var(--gold); border: none; padding: 9px 20px; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; font-family: 'Jost', sans-serif; margin-top: 8px; transition: background 0.2s; }
-    .btn-submit-comment:hover { background: var(--charcoal); }
+    .photo-remove-btn { position: absolute; top: 2px; right: 2px; background: rgba(0,0,0,0.75); color: #fff; border: none; width: 16px; height: 16px; font-size: 9px; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; }
+    .btn-submit-comment { background: var(--gold); color: var(--black); border: none; padding: 10px 20px; font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; font-family: 'Jost', sans-serif; margin-top: 10px; transition: background 0.2s; border-radius: 6px; font-weight: 600; }
+    .btn-submit-comment:hover { background: var(--gold-light); }
 
-    /* ── COMMENT LIST ── */
-    .comment-list { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
-    .comment-item { background: var(--off-white); border: 1px solid #eae5de; padding: 11px 13px; }
-    .comment-item-header { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
-    .comment-author { font-size: 11px; font-weight: 500; color: var(--black); letter-spacing: 0.05em; }
-    .comment-stars-display { font-size: 11px; color: var(--gold); }
-    .comment-date { font-size: 10px; color: #aaa; margin-left: auto; }
-    .comment-text { font-size: 12px; color: var(--mid); line-height: 1.6; }
-    .comment-photos { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 7px; }
-    .comment-photo-thumb { width: 52px; height: 52px; object-fit: cover; border: 1px solid #e0dbd4; cursor: pointer; }
-    .no-comments { font-size: 11px; color: #bbb; letter-spacing: 0.05em; font-style: italic; text-align: center; padding: 10px 0; }
+    /* ══════════════════════════════════════════════════════════
+       RIGHT PANEL — Tabs cabang + info + peta
+       ══════════════════════════════════════════════════════════ */
+    .store-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .store-tab-btn { background: none; border: 1px solid #d8d2c8; color: var(--mid); font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 0.04em; padding: 8px 18px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+    .store-tab-btn:hover { border-color: var(--gold); color: var(--black); }
+    .store-tab-btn.active { border-color: var(--gold); color: var(--gold); background: var(--gold-pale); font-weight: 500; }
+    body.dark .store-tab-btn { border-color: #3a3a3a; color: #bbb; }
+    body.dark .store-tab-btn.active { background: #2a230f; }
+
+    .store-info-card { background: var(--charcoal); border: 1px solid #2a2a2a; border-radius: 10px; padding: 24px; color: #e8e5e0; }
+    .store-info-name { display: flex; align-items: center; gap: 9px; font-family: 'Cormorant Garamond', serif; font-size: 21px; color: var(--off-white); margin-bottom: 18px; }
+    .store-info-row { display: flex; align-items: flex-start; gap: 13px; margin-bottom: 16px; }
+    .store-info-icon { width: 34px; height: 34px; border-radius: 8px; background: var(--dark); border: 1px solid #333; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .store-info-label { font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase; color: #888; margin-bottom: 3px; }
+    .store-info-value { font-size: 12.5px; color: #ddd; line-height: 1.55; }
+    .store-info-value a { color: var(--gold-light); text-decoration: none; }
+    .store-info-value a:hover { text-decoration: underline; }
+
+    .store-hours-box { background: var(--dark); border: 1px solid #333; border-radius: 8px; padding: 14px 16px; margin: 18px 0; }
+    .store-hours-title { display: flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 500; color: var(--off-white); margin-bottom: 10px; }
+    .store-hours-row { display: flex; justify-content: space-between; font-size: 12px; color: #bbb; padding: 6px 0; border-top: 1px solid #2c2c2c; }
+    .store-hours-row:first-of-type { border-top: none; }
+    .store-hours-time { color: #ddd; font-weight: 500; }
+    .store-hours-time.highlight { color: var(--gold-light); }
+
+    .store-social-row { display: flex; gap: 10px; margin-bottom: 18px; }
+    .store-social-circle { width: 38px; height: 38px; border-radius: 50%; background: var(--dark); border: 1px solid #333; display: flex; align-items: center; justify-content: center; color: #ccc; text-decoration: none; transition: all 0.2s; font-size: 15px; }
+    .store-social-circle svg { width: 15px; height: 15px; fill: currentColor; }
+    .store-social-circle:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    .btn-toggle-map { width: 100%; background: var(--dark); border: 1px solid #3a3a3a; color: #ddd; font-family: 'Jost', sans-serif; font-size: 11.5px; letter-spacing: 0.06em; padding: 12px; cursor: pointer; border-radius: 6px; transition: all 0.2s; }
+    .btn-toggle-map:hover { border-color: var(--gold); color: var(--gold); }
+    .store-map-wrap { margin-top: 12px; overflow: hidden; border-radius: 8px; border: 1px solid #333; }
+    .store-map-wrap.hidden { display: none; }
+    .store-map-frame-outer iframe { width: 100%; height: 220px; border: 0; display: block; }
 
     /* ── OVERALL RATING BAR ── */
     .overall-rating-bar { background: var(--gold-pale); border: 1px solid var(--gold-pale); padding: 16px 24px; margin-bottom: 28px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
@@ -411,11 +426,6 @@
     body.dark .stores-section { background: var(--charcoal); border-color: #2a2a2a; }
     body.dark .stores-title { color: var(--off-white); }
     body.dark .stores-sub { color: #aaa; }
-    body.dark .store-item { border-color: #333; }
-    body.dark .store-item.active { background: #2a230f; border-color: var(--gold); }
-    body.dark .store-item-name { color: var(--off-white); }
-    body.dark .store-item-addr { color: #aaa; }
-    body.dark .store-map-wrap { border-color: #333; }
     body.dark .modal-box { background: var(--charcoal); }
     body.dark .modal-name { color: var(--off-white); }
     body.dark .modal-tag { border-color: #3a3a3a; color: #bbb; }
@@ -427,18 +437,11 @@
     body.dark .footer-link-list a { color: #999; }
     body.dark .color-option-btn { border-color: #3a3a3a; color: #bbb; }
     body.dark .color-option-btn.active { background: #2a230f; border-color: var(--gold); color: var(--off-white); }
-    body.dark .store-rating-wrap { border-top-color: #333; }
-    body.dark .comment-form-wrap { border-top-color: #333; }
     body.dark .overall-rating-bar { background: #1e1a0a; border-color: #3a2e0a; }
     body.dark .overall-rating-score { color: var(--off-white); }
     body.dark .star-btn.filled { color: var(--gold-light); }
     body.dark .color-selected-name { color: #aaa; }
     body.dark .color-selected-name strong { color: var(--off-white); }
-    body.dark .store-item-meta { color: #777; }
-    body.dark .comment-textarea, body.dark .comment-name-input { background: var(--dark); border-color: #3a3a3a; color: #ccc; }
-    body.dark .comment-item { background: var(--dark); border-color: #2e2e2e; }
-    body.dark .comment-author { color: var(--off-white); }
-    body.dark .comment-text { color: #aaa; }
     body.dark .wishlist-panel { background: var(--charcoal); }
     body.dark .wishlist-item { border-color: #2e2e2e; background: var(--dark); }
     body.dark .wishlist-item-name { color: var(--off-white); }
@@ -447,7 +450,6 @@
     body.dark .share-title { color: var(--off-white); }
     body.dark .share-btn { border-color: #3a3a3a; color: #bbb; }
     body.dark .share-url-input { background: var(--dark); border-color: #3a3a3a; color: #aaa; }
-    body.dark .store-map-open-btn { background: #222; border-color: #3a3a3a; color: #aaa; }
 
     /* ── AUTH MODAL ── */
     .auth-overlay { position: fixed; inset: 0; background: rgba(13,13,13,0.78); display: none; align-items: center; justify-content: center; z-index: 700; padding: 24px; }
@@ -515,6 +517,13 @@
     .admin-table tr:hover td { background: var(--off-white); }
     .admin-table-wrap { overflow-x: auto; }
     .admin-badge { font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; background: var(--gold-pale); color: var(--mid); display: inline-block; }
+    .admin-badge.pending { background: #fdecc8; color: #8a5a00; }
+    .admin-badge.approved { background: #dcf1e0; color: #1e7d34; }
+    .admin-nav-pending-badge { background: #c0392b; color: #fff; font-size: 10px; font-weight: 600; border-radius: 50%; min-width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; padding: 0 4px; margin-left: 6px; }
+    .admin-review-tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+    .admin-review-tab { background: none; border: 1px solid #e0dbd4; color: var(--mid); padding: 7px 14px; font-size: 11px; letter-spacing: 0.05em; cursor: pointer; font-family: 'Jost', sans-serif; border-radius: 20px; transition: all 0.15s; }
+    .admin-review-tab:hover { border-color: var(--gold); color: var(--gold); }
+    .admin-review-tab.active { background: var(--gold); border-color: var(--gold); color: #000; }
     .admin-form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 16px; }
     .admin-form-grid.full { grid-template-columns: 1fr; }
     .admin-field label { display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 6px; }
@@ -846,8 +855,47 @@
     </div>
   </div>
 
-  <div class="stores-grid" style="grid-template-columns:1fr;">
-    <div class="store-list" id="storeList"></div>
+  <div class="stores-grid">
+    <!-- LEFT: RATING & ULASAN -->
+    <div class="reviews-panel">
+      <div class="reviews-panel-title"><span class="quote-icon">&#10077;&#10077;</span> Apa Kata Mereka <span class="reviews-count-badge" id="reviewsCountBadge">0</span></div>
+
+      <div class="rating-summary-card">
+        <div class="rating-summary-top">
+          <div class="rating-summary-score" id="ratingSummaryScore">—</div>
+          <div class="rating-summary-right">
+            <div class="rating-summary-stars" id="ratingSummaryStars"></div>
+            <div class="rating-summary-count" id="ratingSummaryCount">dari 0 ulasan</div>
+          </div>
+        </div>
+        <div class="rating-bars" id="ratingBars"></div>
+      </div>
+
+      <div class="review-list" id="reviewList"></div>
+
+      <button class="btn-see-all-reviews" id="btnSeeAllReviews" onclick="toggleAllReviews()">Lihat Semua Ulasan <span class="chev">⌄</span></button>
+      <button class="btn-write-review" id="btnWriteReview" onclick="toggleWriteReviewForm()">✎ Tulis Ulasan</button>
+
+      <div class="write-review-form hidden" id="writeReviewForm">
+        <div class="wr-stars-label">Beri Rating</div>
+        <div class="store-stars" id="wrStars"></div>
+        <input class="comment-name-input" id="wrName" type="text" placeholder="Nama Anda (opsional)" maxlength="60" />
+        <textarea class="comment-textarea" id="wrText" placeholder="Ceritakan pengalaman belanja Anda di cabang ini..." maxlength="500"></textarea>
+        <div class="photo-upload-row">
+          <button type="button" class="photo-upload-btn" onclick="triggerPhotoUpload()">📷 Upload Foto Bukti</button>
+          <span style="font-size:10px;color:#bbb;letter-spacing:0.05em;">Maks. 4 foto (jpg/png)</span>
+        </div>
+        <input class="photo-upload-input" type="file" id="wrPhotoInput" accept="image/jpeg,image/png,image/webp" multiple onchange="handlePhotoUpload(event)" />
+        <div class="photo-preview-list" id="wrPhotoPreview"></div>
+        <button type="button" class="btn-submit-comment" id="btnSubmitReview" onclick="submitReview()">Kirim Ulasan</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: TAB CABANG + INFO + PETA -->
+    <div class="store-info-panel">
+      <div class="store-tabs" id="storeTabs"></div>
+      <div class="store-info-card" id="storeInfoCard"></div>
+    </div>
   </div>
 </div>
 
@@ -975,7 +1023,7 @@
     <button class="admin-nav-item" data-page="products" onclick="setAdminPage('products')">🛍️ Kelola Produk</button>
     <button class="admin-nav-item" data-page="categories" onclick="setAdminPage('categories')">🗂️ Kelola Kategori</button>
     <button class="admin-nav-item" data-page="stores" onclick="setAdminPage('stores')">📍 Kelola Cabang</button>
-    <button class="admin-nav-item" data-page="reviews" onclick="setAdminPage('reviews')">💬 Ulasan Pelanggan</button>
+    <button class="admin-nav-item" data-page="reviews" onclick="setAdminPage('reviews')">💬 Ulasan Pelanggan <span class="admin-nav-pending-badge" id="reviewsPendingBadge" style="display:none;"></span></button>
     <div class="admin-nav-divider"></div>
     <button class="admin-nav-item" onclick="exitAdminPanel()">🌐 Lihat Situs Frontend</button>
     <button class="admin-nav-item" onclick="handleLogout()">🚪 Keluar (Logout)</button>
@@ -1002,7 +1050,7 @@ function showToast(msg, isError=false) {
 
 /* ============ GLOBAL STATE ============ */
 let CATEGORIES=[], PRODUCTS=[], STORES=[], currentWishlist = [];
-let storeRatings={}, storeComments={}, pendingPhotos={};
+let storeRatings={}, storeComments={}, storeCommentsAll={}, pendingPhotos={}, adminReviewFilter='pending';
 let currentUser=null, authMode='customer', adminCurrentPage='dashboard';
 let adminEditState={type:null,id:null};
 let activeCategory='all', mapVisible=false, activeStoreId=null;
@@ -1096,7 +1144,7 @@ async function loadStores() {
     .filter(s => s.is_visible !== false)  // Only show visible stores
     .map(s=>({
       id:s.id, name:s.name, address:s.address,
-      phone:s.phone, hours:s.hours, query:s.query,
+      phone:s.phone, hours:s.hours, query:s.query, email:s.email||'',
       social:s.social||{ig:'#',fb:'#',wa:'#',tt:'#'},
       is_visible: s.is_visible !== false
     }));
@@ -1120,8 +1168,22 @@ async function loadAllRatings() {
 async function loadAllReviews() {
   const {data,error}=await sb.from('reviews').select('*').order('created_at',{ascending:false});
   if(error) return;
-  STORES.forEach(s=>{storeComments[s.id]=[];});
-  data.forEach(r=>{if(storeComments[r.store_id]!==undefined) storeComments[r.store_id].push({id:r.id,author:r.author,rating:r.rating,text:r.text,photos:r.photos||[],date:r.created_at});});
+  STORES.forEach(s=>{storeComments[s.id]=[];storeCommentsAll[s.id]=[];});
+  data.forEach(r=>{
+    // Ulasan lama tanpa kolom status dianggap sudah disetujui (kompatibilitas mundur)
+    const status=r.status||'approved';
+    const item={id:r.id,author:r.author,rating:r.rating,text:r.text,photos:r.photos||[],date:r.created_at,status};
+    if(storeCommentsAll[r.store_id]!==undefined) storeCommentsAll[r.store_id].push(item);
+    if(status==='approved'&&storeComments[r.store_id]!==undefined) storeComments[r.store_id].push(item);
+  });
+  updatePendingBadge();
+}
+
+function updatePendingBadge(){
+  const badge=document.getElementById('reviewsPendingBadge');
+  if(!badge) return;
+  const pending=STORES.reduce((a,s)=>a+((storeCommentsAll[s.id]||[]).filter(c=>c.status==='pending').length),0);
+  if(pending>0){badge.textContent=pending;badge.style.display='inline-flex';}else{badge.style.display='none';}
 }
 
 /* ============================================================
@@ -1281,36 +1343,35 @@ function getUserIdentifier() {
   if(!uid){uid='anon_'+Math.random().toString(36).slice(2);sessionStorage.setItem('hf_uid',uid);}
   return uid;
 }
-async function rateStore(storeId,val) {
-  const uid=getUserIdentifier();
-  const r=storeRatings[storeId];
-  const {error}=await sb.from('ratings').upsert({store_id:storeId,user_identifier:uid,rating:val},{onConflict:'store_id,user_identifier'});
-  if(error){showToast('Gagal menyimpan rating.',true);return;}
-  if(r.userRating>0){r.total=r.total-r.userRating+val;}else{r.total+=val;r.count+=1;}
-  r.userRating=val;
-  renderStars(storeId); updateRatingSummary(storeId); updateOverallRating();
-  showToast('Rating berhasil disimpan! '+'★'.repeat(val));
-}
-
 /* ============================================================
-   REVIEWS
+   REVIEWS — kirim rating + komentar sekaligus
    ============================================================ */
-async function submitComment(storeId) {
-  const r=storeRatings[storeId];
-  const nameEl=document.getElementById('cname-'+storeId);
-  const textEl=document.getElementById('ctext-'+storeId);
+async function submitReview() {
+  const storeId=activeStoreId;
+  const nameEl=document.getElementById('wrName');
+  const textEl=document.getElementById('wrText');
   const text=textEl.value.trim();
-  const photos=[...pendingPhotos[storeId]];
-  if(!text&&photos.length===0){textEl.style.borderColor='var(--gold)';textEl.placeholder='Tulis komentar atau upload foto terlebih dahulu';setTimeout(()=>{textEl.style.borderColor='';textEl.placeholder='Ceritakan pengalaman belanja Anda di cabang ini...';},2000);return;}
-  const btn=document.querySelector(`button[onclick="submitComment('${storeId}')"]`);
+  const photos=[...(pendingPhotos[storeId]||[])];
+  if(!wrRating&&!text&&photos.length===0){textEl.style.borderColor='var(--gold)';textEl.placeholder='Beri rating bintang atau tulis komentar terlebih dahulu';setTimeout(()=>{textEl.style.borderColor='';textEl.placeholder='Ceritakan pengalaman belanja Anda di cabang ini...';},2000);return;}
+  const btn=document.getElementById('btnSubmitReview');
   if(btn){btn.disabled=true;btn.textContent='Mengirim...';}
-  const {data,error}=await sb.from('reviews').insert({store_id:storeId,author:nameEl.value.trim()||'Pelanggan Anonim',rating:r.userRating||0,text,photos}).select().single();
-  if(btn){btn.disabled=false;btn.textContent='Kirim Komentar';}
-  if(error){showToast('Gagal mengirim komentar.',true);return;}
-  storeComments[storeId].unshift({id:data.id,author:data.author,rating:data.rating,text:data.text,photos:data.photos,date:data.created_at});
-  nameEl.value='';textEl.value='';pendingPhotos[storeId]=[];
-  renderPhotoPreview(storeId); renderComments(storeId);
-  showToast('Ulasan berhasil dikirim! Terima kasih.');
+  const {data,error}=await sb.from('reviews').insert({store_id:storeId,author:nameEl.value.trim()||'Pelanggan Anonim',rating:wrRating||0,text,photos,status:'pending'}).select().single();
+  if(btn){btn.disabled=false;btn.textContent='Kirim Ulasan';}
+  if(error){showToast('Gagal mengirim ulasan.',true);return;}
+  // Ulasan berstatus "pending" — belum ditambahkan ke storeComments (yang tampil di frontend),
+  // hanya disimpan ke storeCommentsAll agar admin bisa melihatnya di dashboard untuk dikonfirmasi.
+  if(storeCommentsAll[storeId]) storeCommentsAll[storeId].unshift({id:data.id,author:data.author,rating:data.rating,text:data.text,photos:data.photos,date:data.created_at,status:'pending'});
+  updatePendingBadge();
+  if(wrRating>0){
+    const uid=getUserIdentifier();
+    const r=storeRatings[storeId]||(storeRatings[storeId]={total:0,count:0,userRating:0});
+    const {error:rErr}=await sb.from('ratings').upsert({store_id:storeId,user_identifier:uid,rating:wrRating},{onConflict:'store_id,user_identifier'});
+    if(!rErr){ if(r.userRating>0){r.total=r.total-r.userRating+wrRating;}else{r.total+=wrRating;r.count+=1;} r.userRating=wrRating; updateOverallRating(); }
+  }
+  nameEl.value='';textEl.value='';pendingPhotos[storeId]=[];wrRating=0;
+  renderPhotoPreview(); renderWrStars(); renderReviewsPanel(storeId);
+  toggleWriteReviewForm();
+  showToast('Ulasan berhasil dikirim! Menunggu konfirmasi admin sebelum tampil di halaman ini.');
 }
 
 /* ============================================================
@@ -1607,135 +1668,206 @@ function socialIcon(type){
   return icons[type]||'';
 }
 
-function buildStores(){
-  const listEl=document.getElementById('storeList');
-  if(!STORES.length){listEl.innerHTML='<p style="color:#999;font-size:13px;">Belum ada cabang. Tambahkan di Admin Panel.</p>';return;}
-  listEl.innerHTML=STORES.map((s,i)=>`
-    <div class="store-item${i===0?' active':''}" data-store="${s.id}" onclick="selectStore('${s.id}')">
-      <div class="store-item-header">
-        <div class="store-item-name">${escHtml(s.name)}</div>
-        <button class="store-item-toggle" id="toggle-${s.id}" onclick="toggleStoreItem('${s.id}',event)" title="Buka/tutup">▼</button>
-      </div>
-      <div class="store-item-body" id="body-${s.id}">
-        <div class="store-item-addr"><strong>Alamat:</strong> ${escHtml(s.address||'')}</div>
-        <div class="store-item-meta">📞 ${escHtml(s.phone||'—')}<br>⏰ ${escHtml(s.hours||'—')}</div>
-        <div class="store-social">
-          <a class="store-social-btn ssb-ig" href="${s.social.ig}" onclick="event.stopPropagation()" target="_blank" rel="noopener">${socialIcon('ig')} Instagram</a>
-          <a class="store-social-btn ssb-fb" href="${s.social.fb}" onclick="event.stopPropagation()" target="_blank" rel="noopener">${socialIcon('fb')} Facebook</a>
-          <a class="store-social-btn ssb-wa" href="${s.social.wa}" onclick="event.stopPropagation()" target="_blank" rel="noopener">${socialIcon('wa')} WhatsApp</a>
-          <a class="store-social-btn ssb-tt" href="${s.social.tt}" onclick="event.stopPropagation()" target="_blank" rel="noopener">${socialIcon('tt')} TikTok</a>
-        </div>
-        <div class="store-rating-wrap">
-          <div class="store-rating-label">★ Beri Rating Cabang Ini</div>
-          <div class="store-stars" id="stars-${s.id}">
-            ${[1,2,3,4,5].map(n=>`<button class="star-btn" onclick="rateStore('${s.id}',${n});event.stopPropagation()" onmouseover="hoverStars('${s.id}',${n})" onmouseout="resetStarHover('${s.id}')">★</button>`).join('')}
-          </div>
-          <div class="store-rating-summary" id="rating-summary-${s.id}">Belum ada rating</div>
-        </div>
-        <!-- MAP SEBELUM REVIEW FORM -->
-       <div class="store-map-area" onclick="event.stopPropagation()">
-  <div class="store-map-area-label">📍 Lokasi Cabang</div>
-  <div class="store-map-content" id="map-content-${s.id}">
-    <div class="store-map-thumb">
-      <iframe
-        src="https://www.google.com/maps?q=${encodeURIComponent(s.query||s.address||s.name)}&output=embed"
-        loading="lazy">
-      </iframe>
-    </div>
-    <a
-      class="store-map-open-btn"
-      href="https://maps.google.com/?q=${encodeURIComponent(s.query||s.address||s.name)}"
-      target="_blank"
-      rel="noopener">
-      🗺️ Buka di Google Maps
-    </a>
-  </div>
-</div>
-        <!-- REVIEW FORM SETELAH PETA -->
-        <div class="comment-form-wrap" onclick="event.stopPropagation()">
-          <div class="comment-form-label">💬 Tinggalkan Komentar &amp; Foto Bukti</div>
-          <input class="comment-name-input" id="cname-${s.id}" type="text" placeholder="Nama Anda (opsional)" maxlength="60" />
-          <textarea class="comment-textarea" id="ctext-${s.id}" placeholder="Ceritakan pengalaman belanja Anda di cabang ini..." maxlength="500"></textarea>
-          <div class="photo-upload-row">
-            <button class="photo-upload-btn" onclick="triggerPhotoUpload('${s.id}')">📷 Upload Foto Bukti</button>
-            <span style="font-size:10px;color:#bbb;letter-spacing:0.05em;">Maks. 4 foto (jpg/png)</span>
-          </div>
-          <input class="photo-upload-input" type="file" id="photo-input-${s.id}" accept="image/jpeg,image/png,image/webp" multiple onchange="handlePhotoUpload(event,'${s.id}')" />
-          <div class="photo-preview-list" id="photo-preview-${s.id}"></div>
-          <button class="btn-submit-comment" onclick="submitComment('${s.id}')">Kirim Komentar</button>
-        </div>
-        <div class="comment-list" id="comment-list-${s.id}"><div class="no-comments">Belum ada komentar. Jadilah yang pertama!</div></div>
-      </div>
-    </div>`).join('');
-  STORES.forEach(s=>{renderStars(s.id);updateRatingSummary(s.id);renderComments(s.id);});
-  if(STORES.length) selectStore(STORES[0].id);
-}
+let showAllReviews=false, wrRating=0;
 
-function toggleStoreItem(storeId, e) {
-  if(e){e.preventDefault();e.stopPropagation();}
-  const body=document.getElementById('body-'+storeId);
-  const toggle=document.getElementById('toggle-'+storeId);
-  if(!body) return;
-  body.classList.toggle('hidden');
-  toggle.classList.toggle('collapsed');
+function buildStores(){
+  const tabsEl=document.getElementById('storeTabs');
+  const cardEl=document.getElementById('storeInfoCard');
+  if(!STORES.length){
+    tabsEl.innerHTML='';
+    cardEl.innerHTML='<p style="color:#999;font-size:13px;">Belum ada cabang. Tambahkan di Admin Panel.</p>';
+    document.getElementById('reviewList').innerHTML='';
+    document.getElementById('reviewsCountBadge').textContent='0';
+    return;
+  }
+  tabsEl.innerHTML=STORES.map(s=>`<button class="store-tab-btn" data-store="${s.id}" onclick="selectStore('${s.id}')">${escHtml(s.name)}</button>`).join('');
+  const keepId=STORES.find(x=>x.id===activeStoreId)?activeStoreId:STORES[0].id;
+  selectStore(keepId);
 }
 
 function selectStore(id){
-  const s=STORES.find(x=>x.id===id);if(!s) return;
+  const s=STORES.find(x=>x.id===id); if(!s) return;
   activeStoreId=id;
-  document.querySelectorAll('.store-item').forEach(el=>el.classList.toggle('active',el.dataset.store===id));
-  if(mapVisible) document.getElementById('storeMapFrame').src='https://www.google.com/maps?q='+encodeURIComponent(s.query||s.address||s.name)+'&output=embed';
+  showAllReviews=false; wrRating=0;
+  document.querySelectorAll('.store-tab-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.store===id));
+  renderStoreInfoCard(s);
+  renderReviewsPanel(id);
+  renderWrStars();
+  const wf=document.getElementById('writeReviewForm'); if(wf) wf.classList.add('hidden');
+  const wb=document.getElementById('btnWriteReview'); if(wb) wb.textContent='✎ Tulis Ulasan';
+  const nameEl=document.getElementById('wrName'); if(nameEl) nameEl.value='';
+  const textEl=document.getElementById('wrText'); if(textEl) textEl.value='';
+  if(!pendingPhotos[id]) pendingPhotos[id]=[];
+  renderPhotoPreview();
 }
+
+/* ============================================================
+   STORE INFO CARD (kanan)
+   ============================================================ */
+function parseHours(hoursStr){
+  if(!hoursStr) return [{label:'Jam Operasional',time:'—'}];
+  const lines=hoursStr.split(/\n|;/).map(l=>l.trim()).filter(Boolean);
+  if(lines.length<=1) return [{label:'Jam Operasional',time:hoursStr.trim()}];
+  return lines.map(l=>{
+    const idx=l.indexOf(':');
+    if(idx===-1) return {label:'Jam Operasional',time:l};
+    return {label:l.slice(0,idx).trim(),time:l.slice(idx+1).trim()};
+  });
+}
+
+function renderStoreInfoCard(s){
+  const el=document.getElementById('storeInfoCard'); if(!el) return;
+  const hoursRows=parseHours(s.hours);
+  const mapQuery=encodeURIComponent(s.query||s.address||s.name);
+  el.innerHTML=`
+    <div class="store-info-name">🏬 ${escHtml(s.name)}</div>
+    <div class="store-info-row">
+      <div class="store-info-icon">📍</div>
+      <div><div class="store-info-label">Alamat</div><div class="store-info-value">${escHtml(s.address||'—')}</div></div>
+    </div>
+    <div class="store-info-row">
+      <div class="store-info-icon">📞</div>
+      <div><div class="store-info-label">Telepon</div><div class="store-info-value">${s.phone?`<a href="tel:${escHtml(s.phone.replace(/[^0-9+]/g,''))}">${escHtml(s.phone)}</a>`:'—'}</div></div>
+    </div>
+    ${s.email?`<div class="store-info-row">
+      <div class="store-info-icon">✉️</div>
+      <div><div class="store-info-label">Email</div><div class="store-info-value"><a href="mailto:${escHtml(s.email)}">${escHtml(s.email)}</a></div></div>
+    </div>`:''}
+    <div class="store-hours-box">
+      <div class="store-hours-title">🕒 Jam Operasional</div>
+      ${hoursRows.map(h=>`<div class="store-hours-row"><span>${escHtml(h.label)}</span><span class="store-hours-time${/minggu|sunday/i.test(h.label)?' highlight':''}">${escHtml(h.time)}</span></div>`).join('')}
+    </div>
+    <div class="store-social-row">
+      <a class="store-social-circle" href="${s.social.wa&&s.social.wa!=='#'?s.social.wa:'#'}" target="_blank" rel="noopener" title="WhatsApp">${socialIcon('wa')}</a>
+      <a class="store-social-circle" href="${s.social.tt&&s.social.tt!=='#'?s.social.tt:'#'}" target="_blank" rel="noopener" title="TikTok">${socialIcon('tt')}</a>
+      <a class="store-social-circle" href="${s.social.fb&&s.social.fb!=='#'?s.social.fb:'#'}" target="_blank" rel="noopener" title="Facebook">${socialIcon('fb')}</a>
+      <a class="store-social-circle" href="${s.social.ig&&s.social.ig!=='#'?s.social.ig:'#'}" target="_blank" rel="noopener" title="Instagram">${socialIcon('ig')}</a>
+      <a class="store-social-circle" href="https://maps.google.com/?q=${mapQuery}" target="_blank" rel="noopener" title="Buka di Google Maps">📍</a>
+    </div>
+    <button class="btn-toggle-map" id="btnToggleMap" onclick="toggleStoreMap()">🗺️ Lihat Lokasi di Google Maps</button>
+    <div class="store-map-wrap hidden" id="storeMapWrap">
+      <div class="store-map-frame-outer"><iframe id="storeMapFrame" loading="lazy"></iframe></div>
+    </div>`;
+}
+
+function toggleStoreMap(){
+  const wrap=document.getElementById('storeMapWrap');
+  const btn=document.getElementById('btnToggleMap');
+  const s=STORES.find(x=>x.id===activeStoreId); if(!wrap||!btn||!s) return;
+  const opening=wrap.classList.contains('hidden');
+  if(opening){
+    const frame=document.getElementById('storeMapFrame');
+    if(frame&&!frame.src) frame.src='https://www.google.com/maps?q='+encodeURIComponent(s.query||s.address||s.name)+'&output=embed';
+    wrap.classList.remove('hidden');
+    btn.innerHTML='🗺️ Sembunyikan Peta';
+  } else {
+    wrap.classList.add('hidden');
+    btn.innerHTML='🗺️ Lihat Lokasi di Google Maps';
+  }
+}
+
+/* ============================================================
+   REVIEWS PANEL (kiri) — ringkasan rating + daftar ulasan
+   ============================================================ */
+function renderReviewsPanel(storeId){
+  const comments=storeComments[storeId]||[];
+  const rated=comments.filter(c=>c.rating>0);
+  const count=rated.length;
+  const avg=count?rated.reduce((a,c)=>a+c.rating,0)/count:0;
+  const badge=document.getElementById('reviewsCountBadge'); if(badge) badge.textContent=comments.length;
+  const scoreEl=document.getElementById('ratingSummaryScore'); if(scoreEl) scoreEl.textContent=count?avg.toFixed(1):'—';
+  const countEl=document.getElementById('ratingSummaryCount'); if(countEl) countEl.textContent=`dari ${count} ulasan`;
+  const rounded=Math.round(avg);
+  const starsEl=document.getElementById('ratingSummaryStars');
+  if(starsEl) starsEl.innerHTML=[1,2,3,4,5].map(n=>`<span class="rs-star${n<=rounded?' filled':''}">★</span>`).join('');
+
+  const dist=[0,0,0,0,0];
+  rated.forEach(c=>{ if(c.rating>=1&&c.rating<=5) dist[c.rating-1]++; });
+  const barsEl=document.getElementById('ratingBars');
+  if(barsEl) barsEl.innerHTML=[5,4,3,2,1].map(star=>{
+    const n=dist[star-1];
+    const pct=count?Math.round(n/count*100):0;
+    return `<div class="rating-bar-row"><span class="rb-label">${star}★</span><div class="rb-track"><div class="rb-fill" style="width:${pct}%"></div></div><span class="rb-count">${n}</span></div>`;
+  }).join('');
+
+  const listEl=document.getElementById('reviewList');
+  if(!listEl) return;
+  if(!comments.length){
+    listEl.innerHTML='<div class="no-comments">Belum ada ulasan. Jadilah yang pertama!</div>';
+  } else {
+    const shown=showAllReviews?comments:comments.slice(0,3);
+    listEl.innerHTML=shown.map(c=>{
+      const realIdx=comments.indexOf(c);
+      const initials=(c.author||'A').trim().slice(0,2).toUpperCase();
+      return `<div class="review-item">
+        <div class="review-item-head">
+          <div class="review-avatar">${escHtml(initials)}</div>
+          <div class="review-item-meta">
+            <div class="review-author">${escHtml(c.author||'Anonim')}</div>
+            <div class="review-date">${formatDate(c.date)}</div>
+          </div>
+        </div>
+        ${c.rating>0?`<div class="review-stars">${'★'.repeat(c.rating)}${'☆'.repeat(5-c.rating)}</div>`:''}
+        ${c.text?`<div class="review-text">"${escHtml(c.text)}"</div>`:''}
+        ${c.photos&&c.photos.length?`<div class="review-photos">${c.photos.map((src,pi)=>`<img class="review-photo-thumb" src="${src}" alt="Foto bukti" onclick="openLightbox('${storeId}',${realIdx},${pi})" />`).join('')}</div>`:''}
+      </div>`;
+    }).join('');
+  }
+  const seeAllBtn=document.getElementById('btnSeeAllReviews');
+  if(seeAllBtn){
+    if(comments.length>3){
+      seeAllBtn.style.display='';
+      seeAllBtn.innerHTML=showAllReviews?'Sembunyikan Ulasan <span class="chev up">⌄</span>':'Lihat Semua Ulasan <span class="chev">⌄</span>';
+    } else { seeAllBtn.style.display='none'; }
+  }
+}
+function toggleAllReviews(){ showAllReviews=!showAllReviews; renderReviewsPanel(activeStoreId); }
+
+function toggleWriteReviewForm(){
+  const wf=document.getElementById('writeReviewForm');
+  const btn=document.getElementById('btnWriteReview');
+  if(!wf||!btn) return;
+  const opening=wf.classList.contains('hidden');
+  wf.classList.toggle('hidden');
+  btn.textContent=opening?'✕ Tutup Form':'✎ Tulis Ulasan';
+  if(opening) wf.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+/* ============================================================
+   BINTANG PENILAIAN (form tulis ulasan)
+   ============================================================ */
+function renderWrStars(){
+  const el=document.getElementById('wrStars'); if(!el) return;
+  el.innerHTML=[1,2,3,4,5].map(n=>`<button type="button" class="star-btn${n<=wrRating?' filled':''}" onclick="setWrRating(${n})" onmouseover="hoverWrStars(${n})" onmouseout="renderWrStars()">★</button>`).join('');
+}
+function setWrRating(n){ wrRating=n; renderWrStars(); }
+function hoverWrStars(n){ document.querySelectorAll('#wrStars .star-btn').forEach((b,i)=>b.classList.toggle('hover-fill',i<n)); }
 
 /* ============================================================
    PHOTO UPLOAD
    ============================================================ */
-function triggerPhotoUpload(storeId){document.getElementById('photo-input-'+storeId).click();}
-function handlePhotoUpload(event,storeId){
+function triggerPhotoUpload(){ const el=document.getElementById('wrPhotoInput'); if(el) el.click(); }
+function handlePhotoUpload(event){
+  const storeId=activeStoreId;
+  if(!pendingPhotos[storeId]) pendingPhotos[storeId]=[];
   const files=Array.from(event.target.files);
   const existing=pendingPhotos[storeId];
   const toAdd=files.slice(0,4-existing.length);
-  toAdd.forEach(file=>{const reader=new FileReader();reader.onload=e=>{pendingPhotos[storeId].push(e.target.result);renderPhotoPreview(storeId);};reader.readAsDataURL(file);});
+  toAdd.forEach(file=>{const reader=new FileReader();reader.onload=e=>{pendingPhotos[storeId].push(e.target.result);renderPhotoPreview();};reader.readAsDataURL(file);});
   event.target.value='';
 }
-function renderPhotoPreview(storeId){
-  const container=document.getElementById('photo-preview-'+storeId);if(!container) return;
-  container.innerHTML=pendingPhotos[storeId].map((src,i)=>`<div class="photo-preview-item"><img src="${src}" alt="Preview ${i+1}" /><button class="photo-remove-btn" onclick="removePhoto('${storeId}',${i})">✕</button></div>`).join('');
+function renderPhotoPreview(){
+  const storeId=activeStoreId;
+  const container=document.getElementById('wrPhotoPreview'); if(!container) return;
+  container.innerHTML=(pendingPhotos[storeId]||[]).map((src,i)=>`<div class="photo-preview-item"><img src="${src}" alt="Preview ${i+1}" /><button class="photo-remove-btn" onclick="removePhoto(${i})">✕</button></div>`).join('');
 }
-function removePhoto(storeId,idx){pendingPhotos[storeId].splice(idx,1);renderPhotoPreview(storeId);}
-
-/* ============================================================
-   COMMENTS RENDER
-   ============================================================ */
-function renderComments(storeId){
-  const listEl=document.getElementById('comment-list-'+storeId);if(!listEl) return;
-  const comments=storeComments[storeId]||[];
-  if(!comments.length){listEl.innerHTML='<div class="no-comments">Belum ada komentar. Jadilah yang pertama!</div>';return;}
-  listEl.innerHTML=comments.map((c,idx)=>`
-    <div class="comment-item">
-      <div class="comment-item-header">
-        <span class="comment-author">${escHtml(c.author)}</span>
-        ${c.rating>0?`<span class="comment-stars-display">${'★'.repeat(c.rating)}${'☆'.repeat(5-c.rating)}</span>`:''}
-        <span class="comment-date">${formatDate(c.date)}</span>
-      </div>
-      ${c.text?`<div class="comment-text">${escHtml(c.text)}</div>`:''}
-      ${c.photos&&c.photos.length?`<div class="comment-photos">${c.photos.map((src,pi)=>`<img class="comment-photo-thumb" src="${src}" alt="Foto bukti" onclick="openLightbox('${storeId}',${idx},${pi})" />`).join('')}</div>`:''}
-    </div>`).join('');
-}
+function removePhoto(idx){ pendingPhotos[activeStoreId].splice(idx,1); renderPhotoPreview(); }
 
 /* ============================================================
    LIGHTBOX
    ============================================================ */
 function openLightbox(storeId,commentIdx,photoIdx){const src=storeComments[storeId][commentIdx].photos[photoIdx];document.getElementById('lightboxImg').src=src;document.getElementById('lightbox').classList.add('open');}
 function closeLightbox(){document.getElementById('lightbox').classList.remove('open');}
-
-/* ============================================================
-   RATING UI
-   ============================================================ */
-function hoverStars(storeId,val){document.querySelectorAll(`#stars-${storeId} .star-btn`).forEach((s,i)=>{s.style.color=i<val?'var(--gold)':'';});}
-function resetStarHover(storeId){renderStars(storeId);}
-function renderStars(storeId){const r=storeRatings[storeId]||{userRating:0};document.querySelectorAll(`#stars-${storeId} .star-btn`).forEach((s,i)=>{s.classList.toggle('filled',i<r.userRating);s.style.color='';});}
-function updateRatingSummary(storeId){const r=storeRatings[storeId]||{total:0,count:0};const el=document.getElementById('rating-summary-'+storeId);if(!el) return;if(!r.count){el.innerHTML='Belum ada rating';return;}const avg=(r.total/r.count).toFixed(1);el.innerHTML=`<strong>${avg}</strong> / 5 &nbsp;${'★'.repeat(Math.round(r.total/r.count))}${'☆'.repeat(5-Math.round(r.total/r.count))}&nbsp; (${r.count} ulasan)`;}
 function updateOverallRating(){
   const rated=STORES.filter(s=>storeRatings[s.id]&&storeRatings[s.id].count>0);
   const scoreEl=document.getElementById('overallScore'),starsEl=document.getElementById('overallStars'),metaEl=document.getElementById('overallMeta');
@@ -1774,13 +1906,15 @@ function setAdminPage(page){
 
 function renderAdminDashboard(){
   const totalReviews=STORES.reduce((a,s)=>a+(storeComments[s.id]?storeComments[s.id].length:0),0);
+  const pendingReviews=STORES.reduce((a,s)=>a+((storeCommentsAll[s.id]||[]).filter(c=>c.status==='pending').length),0);
   const totalValue=PRODUCTS.reduce((a,p)=>a+p.price,0);
   return `<div class="admin-header"><div><h1 class="admin-page-title">Ringkasan <em>Dashboard</em></h1><p class="admin-page-sub">Gambaran umum data toko HarmoniFashion saat ini.</p></div></div>
     <div class="admin-stats-row">
       <div class="admin-stat-card"><div class="admin-stat-label">Total Produk</div><div class="admin-stat-value">${PRODUCTS.length}</div></div>
       <div class="admin-stat-card"><div class="admin-stat-label">Total Kategori</div><div class="admin-stat-value">${CATEGORIES.length}</div></div>
       <div class="admin-stat-card"><div class="admin-stat-label">Total Cabang</div><div class="admin-stat-value">${STORES.length}</div></div>
-      <div class="admin-stat-card"><div class="admin-stat-label">Total Ulasan</div><div class="admin-stat-value">${totalReviews}</div></div>
+      <div class="admin-stat-card"><div class="admin-stat-label">Ulasan Tayang</div><div class="admin-stat-value">${totalReviews}</div></div>
+      <div class="admin-stat-card"><div class="admin-stat-label">Menunggu Konfirmasi</div><div class="admin-stat-value" style="${pendingReviews>0?'color:#c0392b;':''}">${pendingReviews}</div></div>
       <div class="admin-stat-card"><div class="admin-stat-label">Estimasi Nilai Katalog</div><div class="admin-stat-value" style="font-size:20px;">${formatRupiah(totalValue)}</div></div>
     </div>
     <div class="admin-panel"><div class="admin-panel-title">Produk Terbaru</div>
@@ -2088,10 +2222,11 @@ function storeFormHtml(s){
       <div class="admin-field"><label>ID Cabang (slug)</label><input type="text" id="sf-id" value="${editing?s.id:''}" ${editing?'readonly':''} required /></div>
       <div class="admin-field"><label>Nama Cabang</label><input type="text" id="sf-name" value="${editing?escHtml(s.name):''}" required /></div>
       <div class="admin-field"><label>Telepon</label><input type="text" id="sf-phone" value="${editing?escHtml(s.phone||''):''}" /></div>
-      <div class="admin-field"><label>Jam Operasional</label><input type="text" id="sf-hours" value="${editing?escHtml(s.hours||''):''}" /></div>
+      <div class="admin-field"><label>Email</label><input type="email" id="sf-email" value="${editing?escHtml(s.email||''):''}" placeholder="cabang@email.com" /></div>
     </div>
     <div class="admin-form-grid full">
       <div class="admin-field"><label>Alamat Lengkap</label><textarea id="sf-address" rows="2">${editing?escHtml(s.address||''):''}</textarea></div>
+      <div class="admin-field"><label>Jam Operasional (satu baris = satu baris tampilan, format "Label: Jam")</label><textarea id="sf-hours" rows="3" placeholder="Senin - Jumat: 09:00 - 21:00&#10;Sabtu: 09:00 - 21:00&#10;Minggu: 10:00 - 18:30">${editing?escHtml(s.hours||''):''}</textarea></div>
       <div class="admin-field"><label>Query Lokasi untuk Peta</label><input type="text" id="sf-query" value="${editing?escHtml(s.query||''):''}" placeholder="Cth: HarmoniFashion Jakarta Senayan City" /></div>
     </div>
     <button type="submit" class="btn-admin-action gold">${editing?'Simpan Perubahan':'Tambah Cabang'}</button>
@@ -2103,11 +2238,24 @@ async function saveStoreForm(e){
   const id=document.getElementById('sf-id').value.trim().toLowerCase().replace(/\s+/g,'-');
   const name=document.getElementById('sf-name').value.trim();
   const phone=document.getElementById('sf-phone').value.trim();
+  const email=document.getElementById('sf-email').value.trim();
   const hours=document.getElementById('sf-hours').value.trim();
   const address=document.getElementById('sf-address').value.trim();
   const query=document.getElementById('sf-query').value.trim()||address;
-  if(adminEditState.type==='store'&&adminEditState.id!=null){const {error}=await sb.from('stores').update({name,phone,hours,address,query}).eq('id',adminEditState.id);if(error){showToast('Gagal simpan cabang.',true);return false;}showToast('Data cabang diperbarui!');}
-  else{const {error}=await sb.from('stores').insert({id,name,phone,hours,address,query,social:{ig:'#',fb:'#',wa:'#',tt:'#'},is_visible:true});if(error){showToast('Gagal tambah cabang: '+error.message,true);return false;}showToast('Cabang baru ditambahkan!');}
+  const emailMissingMsg='(kolom "email" belum ada di tabel stores — tambahkan kolom ini agar email tersimpan)';
+  if(adminEditState.type==='store'&&adminEditState.id!=null){
+    let {error}=await sb.from('stores').update({name,phone,email,hours,address,query}).eq('id',adminEditState.id);
+    let noEmailCol=false;
+    if(error&&/email/i.test(error.message||'')){ noEmailCol=true; ({error}=await sb.from('stores').update({name,phone,hours,address,query}).eq('id',adminEditState.id)); }
+    if(error){showToast('Gagal simpan cabang.',true);return false;}
+    showToast(noEmailCol?('Data cabang diperbarui '+emailMissingMsg):'Data cabang diperbarui!');
+  } else {
+    let {error}=await sb.from('stores').insert({id,name,phone,email,hours,address,query,social:{ig:'#',fb:'#',wa:'#',tt:'#'},is_visible:true});
+    let noEmailCol=false;
+    if(error&&/email/i.test(error.message||'')){ noEmailCol=true; ({error}=await sb.from('stores').insert({id,name,phone,hours,address,query,social:{ig:'#',fb:'#',wa:'#',tt:'#'},is_visible:true})); }
+    if(error){showToast('Gagal tambah cabang: '+error.message,true);return false;}
+    showToast(noEmailCol?('Cabang ditambahkan '+emailMissingMsg):'Cabang baru ditambahkan!');
+  }
   await loadStores();adminEditState={type:null,id:null};document.getElementById('storeFormArea').innerHTML=storeFormHtml();buildStores();updateOverallRating();
   await loadAdminStoreRows();
   return false;
@@ -2124,21 +2272,46 @@ function cancelStoreEdit(){adminEditState={type:null,id:null};document.getElemen
 /* ============================================================
    ADMIN: REVIEWS
    ============================================================ */
+function setAdminReviewFilter(f){
+  adminReviewFilter=f;
+  const main=document.getElementById('adminMain');
+  if(main) main.innerHTML=renderAdminReviews();
+}
 function renderAdminReviews(){
   const rows=[];
-  STORES.forEach(s=>{(storeComments[s.id]||[]).forEach(c=>rows.push({storeId:s.id,storeName:s.name,...c}));});
-  return `<div class="admin-header"><div><h1 class="admin-page-title">Ulasan <em>Pelanggan</em></h1><p class="admin-page-sub">Pantau dan moderasi komentar/ulasan dari semua cabang.</p></div></div>
-    <div class="admin-panel"><div class="admin-panel-title">Seluruh Ulasan (${rows.length})</div>
-      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Cabang</th><th>Nama</th><th>Rating</th><th>Komentar</th><th>Tanggal</th><th>Aksi</th></tr></thead>
-        <tbody>${rows.length?rows.map(r=>`<tr><td>${escHtml(r.storeName)}</td><td>${escHtml(r.author||'Anonim')}</td><td>${'★'.repeat(r.rating||0)}${'☆'.repeat(5-(r.rating||0))}</td><td style="max-width:280px;">${escHtml(r.text||'')||'<em>(tanpa teks)</em>'}</td><td>${formatDate(r.date)}</td><td><button class="btn-icon-sm danger" onclick="deleteReview('${r.storeId}',${r.id})">Hapus</button></td></tr>`).join(''):'<tr><td colspan="6" class="admin-empty">Belum ada ulasan dari pelanggan.</td></tr>'}
+  STORES.forEach(s=>{(storeCommentsAll[s.id]||[]).forEach(c=>rows.push({storeId:s.id,storeName:s.name,...c}));});
+  const pendingCount=rows.filter(r=>r.status==='pending').length;
+  const approvedCount=rows.filter(r=>r.status==='approved').length;
+  const tabs=[
+    {key:'pending',label:`Menunggu Konfirmasi (${pendingCount})`},
+    {key:'approved',label:`Disetujui (${approvedCount})`},
+    {key:'all',label:`Semua (${rows.length})`}
+  ];
+  const filtered=adminReviewFilter==='all'?rows:rows.filter(r=>r.status===adminReviewFilter);
+  return `<div class="admin-header"><div><h1 class="admin-page-title">Ulasan <em>Pelanggan</em></h1><p class="admin-page-sub">Ulasan baru dari pelanggan menunggu konfirmasi Anda sebelum tampil di halaman toko.</p></div></div>
+    <div class="admin-review-tabs">${tabs.map(t=>`<button class="admin-review-tab${adminReviewFilter===t.key?' active':''}" onclick="setAdminReviewFilter('${t.key}')">${t.label}</button>`).join('')}</div>
+    <div class="admin-panel"><div class="admin-panel-title">${tabs.find(t=>t.key===adminReviewFilter).label}</div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Cabang</th><th>Nama</th><th>Rating</th><th>Komentar</th><th>Status</th><th>Tanggal</th><th>Aksi</th></tr></thead>
+        <tbody>${filtered.length?filtered.map(r=>`<tr><td>${escHtml(r.storeName)}</td><td>${escHtml(r.author||'Anonim')}</td><td>${'★'.repeat(r.rating||0)}${'☆'.repeat(5-(r.rating||0))}</td><td style="max-width:280px;">${escHtml(r.text||'')||'<em>(tanpa teks)</em>'}</td><td><span class="admin-badge ${r.status==='pending'?'pending':'approved'}">${r.status==='pending'?'Menunggu':'Disetujui'}</span></td><td>${formatDate(r.date)}</td><td>${r.status==='pending'?`<button class="btn-icon-sm" onclick="approveReview('${r.storeId}',${r.id})">Setujui</button>`:''}<button class="btn-icon-sm danger" onclick="deleteReview('${r.storeId}',${r.id})">${r.status==='pending'?'Tolak':'Hapus'}</button></td></tr>`).join(''):'<tr><td colspan="7" class="admin-empty">Tidak ada ulasan pada kategori ini.</td></tr>'}
         </tbody></table></div></div>`;
 }
+async function approveReview(storeId,reviewId){
+  const {error}=await sb.from('reviews').update({status:'approved'}).eq('id',reviewId);
+  if(error){showToast('Gagal menyetujui ulasan.',true);return;}
+  await loadAllReviews();
+  const main=document.getElementById('adminMain');
+  if(main) main.innerHTML=renderAdminReviews();
+  if(storeId===activeStoreId) renderReviewsPanel(storeId);
+  showToast('Ulasan disetujui dan kini tampil di halaman toko.');
+}
 async function deleteReview(storeId,reviewId){
-  if(!confirm('Hapus ulasan ini?'))return;
+  if(!confirm('Hapus/tolak ulasan ini?'))return;
   const {error}=await sb.from('reviews').delete().eq('id',reviewId);
   if(error){showToast('Gagal hapus ulasan.',true);return;}
-  await loadAllReviews();setAdminPage('reviews');
-  const listEl=document.getElementById('comment-list-'+storeId);if(listEl)renderComments(storeId);
+  await loadAllReviews();
+  const main=document.getElementById('adminMain');
+  if(main) main.innerHTML=renderAdminReviews();
+  if(storeId===activeStoreId) renderReviewsPanel(storeId);
   showToast('Ulasan berhasil dihapus.');
 }
 
