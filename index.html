@@ -1357,7 +1357,7 @@ async function submitReview() {
   if(btn){btn.disabled=true;btn.textContent='Mengirim...';}
   const {data,error}=await sb.from('reviews').insert({store_id:storeId,author:nameEl.value.trim()||'Pelanggan Anonim',rating:wrRating||0,text,photos,status:'pending'}).select().single();
   if(btn){btn.disabled=false;btn.textContent='Kirim Ulasan';}
-  if(error){showToast('Gagal mengirim ulasan.',true);return;}
+  if(error){showToast('Gagal mengirim ulasan: '+(error.message||'Terjadi kesalahan.'),true);console.error('submitReview error:',error);return;}
   // Ulasan berstatus "pending" — belum ditambahkan ke storeComments (yang tampil di frontend),
   // hanya disimpan ke storeCommentsAll agar admin bisa melihatnya di dashboard untuk dikonfirmasi.
   if(storeCommentsAll[storeId]) storeCommentsAll[storeId].unshift({id:data.id,author:data.author,rating:data.rating,text:data.text,photos:data.photos,date:data.created_at,status:'pending'});
